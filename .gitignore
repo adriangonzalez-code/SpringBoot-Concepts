@@ -1,0 +1,26 @@
+# JetBrains IDEs (IntelliJ IDEA, WebStorm, PyCharm, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Linux
+*~
+
+# Editor backup files
+*.swp
+*.swo
+*~
+
+# Maven and Java build files
+target/
+*.class
+*.jar
+*.war
+*.ear
