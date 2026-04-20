@@ -17,11 +17,15 @@ public abstract class AbstractStone {
     Integer energyLevel;
     Integer numberOfSides;
 
-    public AbstractStone(String color, String name, String location, Integer energyLevel, Integer numberOfSides) {
+    private static final int NUMBER_SIDES = 6;
+
+    public AbstractStone(String color, String name, String location, Integer energyLevel) {
         this.color = color;
         this.name = name;
         this.location = location;
         this.energyLevel = energyLevel;
-        this.numberOfSides = numberOfSides;
+        this.numberOfSides = NUMBER_SIDES;
     }
+
+    public abstract void usePower();
 }
