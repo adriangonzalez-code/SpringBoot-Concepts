@@ -1,5 +1,8 @@
 package com.driagon.models;
 
+import lombok.ToString;
+
+@ToString
 public class RealityStone extends AbstractStone {
 
     private static final String COLOR = "Red";
@@ -13,6 +16,7 @@ public class RealityStone extends AbstractStone {
 
     @Override
     public void usePower() {
-        System.out.println("The " + NAME + " allows the user to warp reality, creating illusions and changing the fabric of existence.");
+        // Business logic
+        System.out.println("Using the power of the " + NAME + " in " + LOCATION + " to alter reality!\n" + super.toString() + "\n");
     }
 }

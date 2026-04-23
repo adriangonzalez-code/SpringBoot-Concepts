@@ -1,5 +1,8 @@
 package com.driagon.models;
 
+import lombok.ToString;
+
+@ToString
 public class SoulStone extends AbstractStone {
 
     private static final String COLOR = "Orange";
@@ -13,6 +16,7 @@ public class SoulStone extends AbstractStone {
 
     @Override
     public void usePower() {
-        System.out.println("The " + NAME + " allows the user to manipulate the souls of the living and the dead.");
+        // Business logic
+        System.out.println("Using the power of the " + NAME + " in " + LOCATION + " to total control!\n" + super.toString() + "\n");
     }
 }

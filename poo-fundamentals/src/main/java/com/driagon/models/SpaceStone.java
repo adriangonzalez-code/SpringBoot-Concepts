@@ -1,5 +1,8 @@
 package com.driagon.models;
 
+import lombok.ToString;
+
+@ToString
 public class SpaceStone extends AbstractStone {
 
     private static final String COLOR = "Blue";
@@ -13,6 +16,7 @@ public class SpaceStone extends AbstractStone {
 
     @Override
     public void usePower() {
-        System.out.println("The " + NAME + " allows the user to manipulate space, enabling teleportation and the creation of wormholes.");
+        // Business logic
+        System.out.println("Using the power of the " + NAME + " in " + LOCATION + " to manipulate all things in space!\n" + super.toString() + "\n");
     }
 }
