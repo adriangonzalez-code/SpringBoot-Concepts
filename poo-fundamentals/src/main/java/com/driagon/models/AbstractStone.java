@@ -11,11 +11,11 @@ import lombok.ToString;
 @EqualsAndHashCode
 public abstract class AbstractStone {
 
-    String color;
-    String name;
-    String location;
-    Integer energyLevel;
-    Integer numberOfSides;
+    protected String color;
+    protected String name;
+    protected String location;
+    protected Integer energyLevel;
+    protected Integer numberOfSides;
 
     private static final int NUMBER_SIDES = 6;
 

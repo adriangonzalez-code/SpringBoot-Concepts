@@ -8,6 +8,7 @@ import com.driagon.models.SoulStone;
 import com.driagon.models.SpaceStone;
 import com.driagon.models.TimeStone;
 import com.driagon.services.GauntletServiceImpl;
+import com.driagon.singletons.RealityStoneSingleton;
 
 public class Main {
 
@@ -15,12 +16,8 @@ public class Main {
         System.out.println("Welcome to the Marvel Stones Universe!");
 
         final var gauntlet = new GauntletServiceImpl();
-        gauntlet.useGauntlet("Reality");
-        gauntlet.useGauntlet("Mind");
-        gauntlet.useGauntlet("Power");
-        gauntlet.useGauntlet("Soul");
-        gauntlet.useGauntlet("Time");
-        gauntlet.useGauntlet("Space");
+
+        gauntlet.useGauntlet("");
 
         System.out.println("Thank you for visiting the Marvel Stones Universe!");
     }
