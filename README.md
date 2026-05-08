@@ -89,3 +89,13 @@ Características claves:
 * Control sobre la instancia: El constructor suele ser privado y el acceso se hace a través de un método estático.
 
 ![Ejemplo de Singleton](img.png)
+
+### Prototype
+
+Es un patrón de diseño creacional que permite crear objetos sin especificar la clase exacta. En lugar de instanciar directamente una clase, se crea un objeto a partir de una copia de otro objeto existente (prototipo). Esto es útil cuando se necesita crear objetos similares pero con configuraciones diferentes.
+
+Características claves:
+
+* Clonación: Se crea un nuevo objeto a partir de un prototipo existente.
+* Flexibilidad: Permite crear objetos personalizados sin modificar la clase original.
+* Desacoplamiento: El cliente no necesita conocer la clase concreta del objeto clonado.
