@@ -99,3 +99,12 @@ Características claves:
 * Clonación: Se crea un nuevo objeto a partir de un prototipo existente.
 * Flexibilidad: Permite crear objetos personalizados sin modificar la clase original.
 * Desacoplamiento: El cliente no necesita conocer la clase concreta del objeto clonado.
+
+### Factory Method
+
+Define una interfaz o clase abstracta para crear un objeto, pero permite que las subclases decidan qué clase concreta instanciar. Delega la creación del objeto a las subclases mediante la sobrescritura de un método.
+
+### Abstract Factory
+
+Proporciona una interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas. Utiliza composición para delegar la creación a las clases concretas.
+

@@ -5,11 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-public abstract class AbstractStone {
+public abstract class AbstractStone implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     protected String color;
     protected String name;

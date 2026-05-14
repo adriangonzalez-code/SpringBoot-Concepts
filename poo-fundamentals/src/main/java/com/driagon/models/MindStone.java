@@ -5,9 +5,12 @@ import lombok.extern.java.Log;
 
 import java.io.*;
 
-@ToString
+@ToString(callSuper = true)
 @Log
 public class MindStone extends AbstractStone {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private static final String COLOR = "Yellow";
     private static final String NAME = "Mind Stone";
@@ -26,14 +29,14 @@ public class MindStone extends AbstractStone {
 
     public MindStone getPrototype() {
         try (final var bos = new ByteArrayOutputStream();
-             final var oos = new ObjectOutputStream(bos);
-             final var ois = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()))) {
+             final var oos = new ObjectOutputStream(bos)) {
 
-            // serialize and clone the object
             oos.writeObject(this);
             oos.flush();
 
-            return (MindStone) ois.readObject();
+            try (final var ois = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()))) {
+                return (MindStone) ois.readObject();
+            }
         } catch (IOException | ClassNotFoundException ex) {
             log.warning("Error creating prototype: " + ex.getMessage());
             throw new RuntimeException("Error creating prototype", ex);
