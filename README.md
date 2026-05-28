@@ -108,3 +108,39 @@ Define una interfaz o clase abstracta para crear un objeto, pero permite que las
 
 Proporciona una interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas. Utiliza composición para delegar la creación a las clases concretas.
 
+## Spring Framework
+
+### Inyección de Dependencias
+
+El patrón de Inyección de Dependencias (DI) es un patrón de diseño que permite la separación de dependencias entre componentes de software. En lugar de que un componente cree sus propias dependencias, se inyectan desde fuera. Esto facilita la prueba unitaria, la reutilización y la flexibilidad en el diseño de aplicaciones.
+
+Es una técnica en programación que permite a un objeto o clase recibir sus dependencias desde fuentes externas en lugar de crearlas internamente. Esto promueve un código más modular, flexible y fácil de mantener, ya que facilita el desacoplamiento entre componentes y mejora la capacidad de realizar pruebas unitarias y sustituir implementaciones sin modificar el código existente.
+
+En Spring, existen 3 maneras de inyectar dependencias: constructor, setter y campo. Cada una de estas formas tiene sus propias ventajas y desventajas, y la elección dependerá del contexto y las necesidades específicas del proyecto.
+
+#### Constructor (constructor injection)
+
+En el patrón de Inyección de Dependencias, el constructor es una forma común de inyectar dependencias. Al utilizar el constructor, se asegura que todas las dependencias necesarias estén disponibles al momento de la creación del objeto. Esto facilita la inicialización correcta y evita problemas posteriores.
+
+Las dependencias se inyectan a través del constructor de la clase. Es preferida cuando las dependencias son obligatorias, asegurando que el objeto no pueda crearse sin ellas.
+
+#### Setter (setter injection)
+
+En el patrón de Inyección de Dependencias, el setter es otra forma de inyectar dependencias. Al utilizar setters, se puede cambiar la dependencia en tiempo de ejecución, lo que facilita la prueba unitaria y la flexibilidad en el diseño de aplicaciones. Sin embargo, puede llevar a problemas de coherencia si no se manejan correctamente.
+
+Las dependencias se inyectan mediante métodos setter después de que el objeto ha sido construido. Es útil para dependencias opcionales.
+
+#### Campo (field injection)
+
+En el patrón de Inyección de Dependencias, el campo es una forma de inyectar dependencias que permite una mayor flexibilidad en el diseño de aplicaciones. Al utilizar campos, se puede acceder a las dependencias directamente desde el objeto, lo que facilita la manipulación y la modificación de las dependencias en tiempo de ejecución. Sin embargo, puede llevar a problemas de coherencia si no se manejan correctamente.
+
+Las dependencias se inyectan directamente en los campos (atributos) de la clase usando anotaciones como `@Autowired` en Spring. Es más sencilla, pero menos recomendada porque dificulta las pruebas y el desacoplamiento.
+
+#### Inyección por Método (method injection)
+
+En el patrón de Inyección de Dependencias, la inyección por método es una forma de inyectar dependencias que permite una mayor flexibilidad en el diseño de aplicaciones. Al utilizar métodos, se puede acceder a las dependencias directamente desde el objeto, lo que facilita la manipulación y la modificación de las dependencias en tiempo de ejecución. Sin embargo, puede llevar a problemas de coherencia si no se manejan correctamente.
+
+Las dependencias se inyectan mediante métodos específicos de la clase, lo que permite un mayor control sobre el momento y la forma en que se inyectan las dependencias. Es útil para dependencias opcionales y permite una mayor flexibilidad en el diseño de aplicaciones.
+
+Las dependencias se pasan como parámetros a métodos específicos que las requieren. Es útil si una dependencia se necesita solo durante la ejecución de un método y no durante toda la vida del objeto.
+
