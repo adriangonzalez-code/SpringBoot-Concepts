@@ -144,3 +144,26 @@ Las dependencias se inyectan mediante métodos específicos de la clase, lo que 
 
 Las dependencias se pasan como parámetros a métodos específicos que las requieren. Es útil si una dependencia se necesita solo durante la ejecución de un método y no durante toda la vida del objeto.
 
+### Inversión de Control (IoC)
+
+Es un principio en el cual el control del flujo del programa se transfiere a un framework o a un contenedor externo. En el contexto de Spring, esto significa que el contenedor de Spring se encarga de gestionar la creación, configuración y ciclo de vida de los objetos (beans).
+
+La inversión de control se define como delegar el control de los objetos a cualquier framework. Los objetos controlados por Spring se llaman `Beans`.
+
+#### Anotaciones para IoC
+
+* `@Component`: Marca una clase como un bean gestionado por Spring, lo que permite que Spring cree y configure instancias de la clase.
+* `@Service`: Especialización de @Component que indica que la clase proporciona lógica de negocio.
+* `@Repository`: Especialización de @Component que indica que la clase se utiliza para acceder a datos.
+* `@Controller`: Especialización de @Component que indica que la clase maneja solicitudes HTTP en una aplicación web.
+* `@RestController`: Especialización de @Controller que indica que la clase maneja solicitudes HTTP y devuelve respuestas en formato JSON. Esta anotación combina `@Controller` y `@ResponseBody`, lo que simplifica la creación de controladores RESTful.
+* `@Configuration`: Marca una clase como una clase de configuración de Spring, que define beans y otras configuraciones.
+
+#### Anotaciones para DI
+
+* `@Autowired`: Anotación que se utiliza para inyectar dependencias automáticamente.
+* `@Qualifier`: Anotación que se utiliza junto con @Autowired para especificar qué dependencia inyectar cuando hay varias disponibles.
+* `@Value`: Anotación que se utiliza para inyectar valores de propiedades en campos, métodos y constructores.
+* `@Inject`: Anotación que se utiliza para inyectar dependencias automáticamente, similar a @Autowired pero parte de la especificación de Java EE.
+* `@Bean`: Anotación que se utiliza dentro de una clase de configuración para definir un bean.
+* `@Primary`: Anotación que se utiliza para indicar que una implementación o clase concreta es primaria cuando hay varias de ellas que implementan la misma interfaz.  

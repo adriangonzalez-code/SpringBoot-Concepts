@@ -1,25 +1,30 @@
 package com.driagon.services;
 
-import com.driagon.models.AbstractStone;
+import com.driagon.models.*;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
+
+import java.lang.reflect.Field;
+import java.util.Map;
 
 //@Service
 @Log
 //@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class GauntletServiceImpl implements GauntletService {
 
     // NO es inyección de dependencias
     //private final AbstractStone reality = MindStoneSingleton.getInstance();
 
-    private final AbstractStone reality;
-    private final AbstractStone mind;
-    private final AbstractStone power;
-    private final AbstractStone space;
-    private final AbstractStone time;
-    private final AbstractStone soul;
+    private /*final*/ RealityStone reality;
+    private /*final*/ MindStone mind;
+    private /*final*/ PowerStone power;
+    private /*final*/ SpaceStone space;
+    private /*final*/ TimeStone time;
+    private /*final*/ SoulStone soul;
 
     @Override
     public void useGauntlet(String stoneName) {
@@ -41,5 +46,21 @@ public class GauntletServiceImpl implements GauntletService {
         } else {
             throw new IllegalStateException("Can't be using full power service because no stones are equipped");
         }
+    }
+
+    // DI by field
+    public void setStones(Map<String, AbstractStone> stones) {
+        stones.forEach((fieldName, stoneDependency) -> {
+
+            try {
+                Field field = this.getClass().getDeclaredField(fieldName);
+                field.setAccessible(true);
+                field.set(this, stoneDependency);
+                log.info("Stone dependency set for field: " + fieldName);
+            } catch (NoSuchFieldException | IllegalAccessException ex) {
+                log.warning("Error setting stone dependency for field: " + fieldName);
+                return;
+            }
+        });
     }
 }

@@ -6,10 +6,12 @@ import com.driagon.factories.RealityStoneFactory;
 import com.driagon.factories.SoulStoneFactory;
 import com.driagon.factories.SpaceStoneFactory;
 import com.driagon.factories.TimeStoneFactory;
-import com.driagon.models.MindStone;
+import com.driagon.models.*;
 import com.driagon.prototypes.Prototypes;
 import com.driagon.services.GauntletServiceImpl;
 import com.driagon.singletons.MindStoneSingleton;
+
+import java.util.Map;
 
 public class Main {
 
@@ -47,35 +49,37 @@ public class Main {
 
         System.out.println("Thank you for visiting the Marvel Stones Universe!");*/
 
-        System.setProperty("scope", "prototype");
+        System.setProperty("scope", "singleton");
 
-        /*final var timeStoneFactory = new TimeStoneFactory();
-        final var powerStoneFactory = new PowerStoneFactory();
-        final var mindStoneFactory = new MindStoneFactory();
-        final var spaceStoneFactory = new SpaceStoneFactory();
-        final var realityStoneFactory = new RealityStoneFactory();
-        final var soulStoneFactory = new SoulStoneFactory();
+        final var timeFactory = new TimeStoneFactory();
+        final var powerFactory = new PowerStoneFactory();
+        final var mindFactory = new MindStoneFactory();
+        final var spaceFactory = new SpaceStoneFactory();
+        final var realityFactory = new RealityStoneFactory();
+        final var soulFactory = new SoulStoneFactory();
 
-        final var timeStone = timeStoneFactory.createStone();
-        final var powerStone = powerStoneFactory.createStone();
-        final var mindStone = mindStoneFactory.createStone();
-        final var spaceStone = spaceStoneFactory.createStone();
-        final var realityStone = realityStoneFactory.createStone();
-        final var soulStone = soulStoneFactory.createStone();
+        final TimeStone time = (TimeStone) timeFactory.createStone();
+        final PowerStone power = (PowerStone) powerFactory.createStone();
+        final MindStone mind = (MindStone) mindFactory.createStone();
+        final SpaceStone space = (SpaceStone) spaceFactory.createStone();
+        final RealityStone reality = (RealityStone) realityFactory.createStone();
+        final SoulStone soul = (SoulStone) soulFactory.createStone();
 
-        System.out.println(timeStone);
-        System.out.println(powerStone);
-        System.out.println(mindStone);
-        System.out.println(spaceStone);
-        System.out.println(realityStone);
-        System.out.println(soulStone);*/
+        Map<String, AbstractStone> instances = Map.of(
+                "time", time,
+                "power", power,
+                "mind", mind,
+                "space", space,
+                "reality", reality,
+                "soul", soul
+        );
 
-        var realityFactory = new RealityStoneFactory();
+       /* var realityFactory = new RealityStoneFactory();
         var timeFactory = new TimeStoneFactory();
         var soulFactory = new SoulStoneFactory();
         var powerFactory = new PowerStoneFactory();
         var spaceFactory = new SpaceStoneFactory();
-        var mindFactory = new MindStoneFactory();
+        var mindFactory = new MindStoneFactory();*/
 
 
         // DI by setter
@@ -89,9 +93,14 @@ public class Main {
         gauntletService.setMind(mindFactory.createStone());*/
 
         // DI by constructor
-        final var gauntletService = new GauntletServiceImpl(realityFactory.createStone(), mindFactory.createStone(), powerFactory.createStone(), spaceFactory.createStone(), timeFactory.createStone(), soulFactory.createStone());
+        final var gauntletService = new GauntletServiceImpl(reality, mind, power, space, time, soul);
 
-        gauntletService.useGauntlet("reality");
+        // DI by field
+        //final var gauntletService = new GauntletServiceImpl();
+        //gauntletService.setStones(instances);
+
+        gauntletService.useGauntlet("power");
+        gauntletService.useGauntlet("mind");
         gauntletService.useFullPower();
     }
 }
