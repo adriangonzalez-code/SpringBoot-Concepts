@@ -2,6 +2,7 @@ package com.driagon.services;
 
 import com.driagon.models.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -14,6 +15,7 @@ import java.util.Map;
 //@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
 public class GauntletServiceImpl implements GauntletService {
 
     // NO es inyección de dependencias

@@ -1,5 +1,6 @@
 package com.driagon;
 
+import com.driagon.configs.StoneConfig;
 import com.driagon.factories.MindStoneFactory;
 import com.driagon.factories.PowerStoneFactory;
 import com.driagon.factories.RealityStoneFactory;
@@ -49,7 +50,8 @@ public class Main {
 
         System.out.println("Thank you for visiting the Marvel Stones Universe!");*/
 
-        System.setProperty("scope", "singleton");
+        // Set scope
+        /*System.setProperty("scope", "singleton");
 
         final var timeFactory = new TimeStoneFactory();
         final var powerFactory = new PowerStoneFactory();
@@ -72,7 +74,7 @@ public class Main {
                 "space", space,
                 "reality", reality,
                 "soul", soul
-        );
+        );*/
 
        /* var realityFactory = new RealityStoneFactory();
         var timeFactory = new TimeStoneFactory();
@@ -93,14 +95,21 @@ public class Main {
         gauntletService.setMind(mindFactory.createStone());*/
 
         // DI by constructor
-        final var gauntletService = new GauntletServiceImpl(reality, mind, power, space, time, soul);
+        //final var gauntletService = new GauntletServiceImpl(reality, mind, power, space, time, soul);
 
         // DI by field
         //final var gauntletService = new GauntletServiceImpl();
         //gauntletService.setStones(instances);
 
-        gauntletService.useGauntlet("power");
+       /* gauntletService.useGauntlet("power");
         gauntletService.useGauntlet("mind");
+        gauntletService.useFullPower();*/
+
+        final var gauntletService = StoneConfig.setContext(pre -> System.out.println("Do something 1"), post -> System.out.println("Do something 2"));
+
+        gauntletService.useGauntlet("power");
         gauntletService.useFullPower();
+
+        StoneConfig.destroyContext(gauntletService);
     }
 }

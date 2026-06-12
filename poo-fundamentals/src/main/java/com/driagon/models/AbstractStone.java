@@ -34,4 +34,8 @@ public abstract class AbstractStone implements Serializable {
     }
 
     public abstract void usePower();
+
+    public void clear() {
+        System.out.println("Cleaning the " + this.name + " stone...");
+    }
 }
